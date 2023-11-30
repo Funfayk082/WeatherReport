@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -84,6 +85,16 @@ class MainActivity : AppCompatActivity() {
                     currentTemp.text = currTemp + weather.current_units.temperature_2m
                     if (weather.current.weathercode > 50) view.setBackgroundResource(R.drawable.gradient_background_darksky)
                     else view.setBackgroundResource(R.drawable.gradient_background)
+
+                    when(weather.current.weathercode) {
+                        0 -> weatherIcon.setImageResource(R.drawable.sunny_svgrepo_com)
+                        in 1..3 -> weatherIcon.setImageResource(R.drawable.partly_cloudy_svgrepo_com)
+                        in 45..48 -> weatherIcon.setImageResource(R.drawable.fog_svgrepo_com)
+                        in 51..67 -> weatherIcon.setImageResource(R.drawable.rain_2_svgrepo_com)
+                        in 71..86 -> weatherIcon.setImageResource(R.drawable.snow_alt_1_svgrepo_com)
+                    }
+
+
                 }
             }
         }
