@@ -73,6 +73,18 @@ class MainActivity : AppCompatActivity() {
                     if (maxAfterTomorrowTemp < weather.hourly.temperature_2m.get(i))
                         maxAfterTomorrowTemp = weather.hourly.temperature_2m.get(i).toInt()
                 }
+                with(binding) {
+                    morningTemp.text = (mt/6).toString()+ weather.current_units.temperature_2m
+                    dayTemp.text = (dt/6).toString()+ weather.current_units.temperature_2m
+                    eveningTemp.text = (et/6).toString()+ weather.current_units.temperature_2m
+                    nightTemp.text = (nt/6).toString()+ weather.current_units.temperature_2m
+//                    tomorrowTemp.text = "${minTomorrowTemp}...${maxTomorrowTemp}"
+//                    afterTomorrowTemp.text = "${minAfterTomorrowTemp}...${maxAfterTomorrowTemp}"
+//
+                    currentTemp.text = currTemp + weather.current_units.temperature_2m
+                    if (weather.current.weathercode > 50) view.setBackgroundResource(R.drawable.gradient_background_darksky)
+                    else view.setBackgroundResource(R.drawable.gradient_background)
+                }
             }
         }
 
@@ -88,16 +100,8 @@ class MainActivity : AppCompatActivity() {
 //                view.setBackgroundResource(R.drawable.gradient_background)
 //            }
 //
-            with(binding) {
-                morningTemp.text = (mt/6).toString()
-                dayTemp.text = (dt/6).toString()
-                eveningTemp.text = (et/6).toString()
-                nightTemp.text = (nt/6).toString()
-                tomorrowTemp.text = "${minTomorrowTemp}...${maxTomorrowTemp}"
-                afterTomorrowTemp.text = "${minAfterTomorrowTemp}...${maxAfterTomorrowTemp}"
-//
-                currentTemp.text = currTemp
-            }
+
 //        }
+
     }
 }
