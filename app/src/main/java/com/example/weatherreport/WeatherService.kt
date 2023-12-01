@@ -1,17 +1,5 @@
 package com.example.weatherreport
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.example.weatherreport.models.Response
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.net.HttpURLConnection
-import java.net.URL
-
 class WeatherService {
 //    suspend fun fetchWeatherByCityName(lat: Double, lon: Double): Response? {
 //        Log.e("Проверка респонза", "До начала операций")

@@ -18,7 +18,7 @@ class WeatherViewModel : ViewModel() {
     var lon: Double = 40.9269
 
     fun sosat() {
-        val client = ApiConfig.getApiService().getWeather(lat, lon, "temperature_2m,weathercode", "temperature_2m,weathercode")
+        val client = ApiConfig.getApiService().getWeather(lat, lon, "temperature_2m,apparent_temperature,weather_code", "temperature_2m","weather_code,temperature_2m_max,temperature_2m_min")
         client?.enqueue(object : Callback<Response?> {
             override fun onResponse(
                 call: Call<Response?>,

@@ -271,7 +271,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:paddingLeft="30dp"
                 android:text="Днём"
                 android:textColor="@color/textColor"
@@ -283,7 +283,7 @@
                 android:id="@+id/dayTemp"
                 android:layout_marginBottom="30dp"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:paddingRight="40dp"
@@ -297,7 +297,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_marginBottom="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:paddingLeft="30dp"
@@ -317,7 +317,7 @@
                 android:text="0"
                 android:paddingRight="40dp"
                 android:textColor="@color/textColor"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dayTemp" />
@@ -328,18 +328,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:paddingLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:text="Ночью"
                 android:textColor="@color/textColor"
                 android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/eveningTemp" />
 
+
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/nightTemp"
                 android:layout_marginBottom="30dp"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:paddingLeft="30dp"
@@ -349,6 +351,57 @@
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/eveningTemp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/nightTemp"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nightTemp"
+                android:layout_marginTop="160dp"
+                android:paddingLeft="30dp"
+                android:textSize="25dp"
+                android:textColor="@color/textColor"
+                android:text="Завтра"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tomorrowTempTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:paddingRight="30dp"
+                android:textColor="@color/textColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nightTemp"
+                android:layout_marginTop="160dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tomorrowTempTV"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="30dp"
+                android:textSize="25dp"
+                android:textColor="@color/textColor"
+                android:text="Послезавтра"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/afterTomorrowTempTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:textSize="25dp"
+                android:textColor="@color/textColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tomorrowTempTV"
+                android:layout_marginTop="20dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -51,42 +51,39 @@ class MainActivity : AppCompatActivity() {
             this
         ) { weather ->
             weather?.let {
+                Log.e("DA", weather.toString())
                 currTemp = weather.current.temperature_2m
                     .roundToLong().toString()
                 Log.e("Ну и где?", weather.current.temperature_2m.toString())
                 currWC = weather.current
-                    .weathercode
+                    .weather_code
                 for (i in 0..5) mt += weather.hourly.temperature_2m.get(i).toInt()
                 for (i in 6..11) dt += weather.hourly.temperature_2m.get(i).toInt()
                 for (i in 12..17) et += weather.hourly.temperature_2m.get(i).toInt()
                 for (i in 18..23) nt += weather.hourly.temperature_2m.get(i).toInt()
 
-                for (i in 24..47) {
-                    if (minTomorrowTemp > weather.hourly.temperature_2m.get(i))
-                        minTomorrowTemp = weather.hourly.temperature_2m.get(i).toInt()
-                    if (maxTomorrowTemp < weather.hourly.temperature_2m.get(i))
-                        maxTomorrowTemp = weather.hourly.temperature_2m.get(i).toInt()
-                }
-
-                for (i in 48..71) {
-                    if (minAfterTomorrowTemp > weather.hourly.temperature_2m.get(i))
-                        minAfterTomorrowTemp = weather.hourly.temperature_2m.get(i).toInt()
-                    if (maxAfterTomorrowTemp < weather.hourly.temperature_2m.get(i))
-                        maxAfterTomorrowTemp = weather.hourly.temperature_2m.get(i).toInt()
-                }
                 with(binding) {
-                    morningTemp.text = (mt/6).toString()+ weather.current_units.temperature_2m
-                    dayTemp.text = (dt/6).toString()+ weather.current_units.temperature_2m
-                    eveningTemp.text = (et/6).toString()+ weather.current_units.temperature_2m
-                    nightTemp.text = (nt/6).toString()+ weather.current_units.temperature_2m
-//                    tomorrowTemp.text = "${minTomorrowTemp}...${maxTomorrowTemp}"
-//                    afterTomorrowTemp.text = "${minAfterTomorrowTemp}...${maxAfterTomorrowTemp}"
+                    morningTemp.text = (mt / 6).toString() + weather.current_units.temperature_2m
+                    with(weather.daily) {
+                        minTomorrowTemp = temperature_2m_min.get(1).toInt()
+                        minAfterTomorrowTemp = temperature_2m_min.get(2).toInt()
+
+                        maxTomorrowTemp = temperature_2m_max.get(1).toInt()
+                        maxAfterTomorrowTemp = temperature_2m_max.get(2).toInt()
+                    }
+
+
+                    dayTemp.text = (dt / 6).toString() + weather.current_units.temperature_2m
+                    eveningTemp.text = (et / 6).toString() + weather.current_units.temperature_2m
+                    nightTemp.text = (nt / 6).toString() + weather.current_units.temperature_2m
+                    tomorrowTempTV.text = "${minTomorrowTemp}${weather.current_units.temperature_2m}...${maxTomorrowTemp}${weather.current_units.temperature_2m}"
+                    afterTomorrowTempTV.text = "${minAfterTomorrowTemp}${weather.current_units.temperature_2m}...${maxAfterTomorrowTemp}${weather.current_units.temperature_2m}"
 //
                     currentTemp.text = currTemp + weather.current_units.temperature_2m
-                    if (weather.current.weathercode > 50) view.setBackgroundResource(R.drawable.gradient_background_darksky)
+                    if (weather.current.weather_code > 50) view.setBackgroundResource(R.drawable.gradient_background_darksky)
                     else view.setBackgroundResource(R.drawable.gradient_background)
 
-                    when(weather.current.weathercode) {
+                    when (weather.current.weather_code) {
                         0 -> weatherIcon.setImageResource(R.drawable.sunny_svgrepo_com)
                         in 1..3 -> weatherIcon.setImageResource(R.drawable.partly_cloudy_svgrepo_com)
                         in 45..48 -> weatherIcon.setImageResource(R.drawable.fog_svgrepo_com)
@@ -99,20 +96,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        GlobalScope.launch(Dispatchers.Main) {
-//            weatherViewModel.sosat()
-//
-//            var currTemp: String = weatherViewModel.currTemp
-//            var currWC: Int = weatherViewModel.currWC
-//
-//            if (currWC > 50) {
-//                view.setBackgroundResource(R.drawable.gradient_background_darksky)
-//            } else {
-//                view.setBackgroundResource(R.drawable.gradient_background)
-//            }
-//
-
-//        }
 
     }
 }

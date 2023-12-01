@@ -3,6 +3,8 @@ package com.example.weatherreport.models
 data class Response(
     val current: Current,
     val current_units: CurrentUnits,
+    val daily: Daily,
+    val daily_units: DailyUnits,
     val elevation: Double,
     val generationtime_ms: Double,
     val hourly: Hourly,

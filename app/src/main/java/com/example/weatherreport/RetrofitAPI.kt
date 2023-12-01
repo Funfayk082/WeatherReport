@@ -11,7 +11,9 @@ interface RetrofitAPI {
     fun  getWeather(@Query("latitude") latitude: Double,
                     @Query("longitude") longitude: Double,
                     @Query("current") current: String,
-                    @Query("hourly") hourly: String): Call<Response?>?
+                    @Query("hourly") hourly: String,
+                    @Query("daily") daily: String,
+                    ): Call<Response?>?
 }
 
 //
