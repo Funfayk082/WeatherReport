@@ -190,10 +190,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
     android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
 
     android:background="@drawable/gradient_background"
 
@@ -212,9 +212,13 @@
                 android:id="@+id/YourCityTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:fontFamily="@font/roboto_mono_bold_italic"
                 android:padding="30dp"
                 android:text="Кострома"
+                android:shadowColor="@color/black"
+                android:shadowRadius="15"
+                android:shadowDx="5"
+                android:shadowDy="5"
                 android:textColor="@color/white"
                 android:textSize="40dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -225,8 +229,8 @@
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_margin="20dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/currentTemp"
@@ -234,9 +238,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:paddingRight="50dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="15"
                 android:paddingBottom="100dp"
                 android:text="&#45;&#45;&#45;&#45;"
                 android:textColor="@color/white"
+                android:fontFamily="@font/source_sans_pro_black"
                 android:textSize="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/YourCityTV" />
@@ -248,23 +257,33 @@
                 android:paddingLeft="30dp"
                 android:text="Утром"
                 android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/currentTemp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/morningTemp"
-                android:layout_marginBottom="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginBottom="30dp"
                 android:paddingLeft="30dp"
+                android:paddingRight="40dp"
                 android:text="0"
                 android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/currentTemp"
-                android:paddingRight="40dp"/>
+                app:layout_constraintTop_toBottomOf="@id/currentTemp" />
 
 
             <com.google.android.material.textview.MaterialTextView
@@ -272,37 +291,52 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginTop="25dp"
-                android:paddingLeft="30dp"
+                android:paddingLeft="31dp"
                 android:text="Днём"
                 android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/morningTemp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/dayTemp"
-                android:layout_marginBottom="30dp"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:paddingRight="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
                 android:paddingLeft="30dp"
+                android:paddingRight="40dp"
                 android:text="0"
                 android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/morningTemp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
                 android:paddingLeft="30dp"
                 android:text="Вечером"
                 android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dayTemp" />
@@ -311,95 +345,168 @@
                 android:id="@+id/eveningTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
                 android:layout_gravity="start"
-                android:paddingLeft="30dp"
-                android:text="0"
-                android:paddingRight="40dp"
-                android:textColor="@color/textColor"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="40dp"
+                android:text="0"
+                android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dayTemp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
-                android:layout_marginBottom="30dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:paddingLeft="30dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:paddingLeft="30dp"
                 android:text="Ночью"
                 android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/eveningTemp" />
-
 
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/nightTemp"
-                android:layout_marginBottom="30dp"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="25dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
                 android:paddingLeft="30dp"
-                android:text="0"
                 android:paddingRight="40dp"
+                android:text="0"
                 android:textColor="@color/textColor"
+                android:shadowColor="@color/black"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:fontFamily="@font/oswald_bold"
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/eveningTemp" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintCircleRadius="30dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/nightTemp"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_marginTop="100dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/background_day_report"
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nightTemp"
-                android:layout_marginTop="160dp"
-                android:paddingLeft="30dp"
-                android:textSize="25dp"
-                android:textColor="@color/textColor"
-                android:text="Завтра"/>
+                app:layout_constraintTop_toBottomOf="@id/nightTemp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tomorrowTempTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:paddingRight="30dp"
-                android:textColor="@color/textColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightTemp"
-                android:layout_marginTop="160dp"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="30dp"
+                    android:fontFamily="@font/oswald_bold"
+                    android:text="Завтра"
+                    android:textColor="@color/textColor"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tomorrowTempTV"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="30dp"
-                android:textSize="25dp"
-                android:textColor="@color/textColor"
-                android:text="Послезавтра"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tomorrowTempTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald_bold"
+                    android:paddingTop="30dp"
+                    android:paddingRight="30dp"
+                    android:textColor="@color/textColor"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/afterTomorrowTempTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="30dp"
-                android:textSize="25dp"
-                android:textColor="@color/textColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tomorrowTempTV"
-                android:layout_marginTop="20dp"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/oswald_bold"
+                    android:paddingLeft="30dp"
+                    android:text="Послезавтра"
+                    android:textColor="@color/textColor"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tomorrowTempTV" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/afterTomorrowTempTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingRight="30dp"
+                    android:fontFamily="@font/oswald_bold"
+                    android:textColor="@color/textColor"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tomorrowTempTV" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/afterTomorrowTempStr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:paddingLeft="30dp"
+                    android:fontFamily="@font/oswald_bold"
+                    android:textColor="@color/textColor"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/afterTomorrowTempTV" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/afterAfterTomorrowTempTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:paddingRight="30dp"
+                    android:fontFamily="@font/oswald_bold"
+                    android:textColor="@color/textColor"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/afterTomorrowTempTV" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

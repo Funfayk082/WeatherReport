@@ -6,4 +6,7 @@
     <color name="lightSky">#BDD3DC</color>
     <color name="darkSky">#023143</color>
     <color name="textColor">#FFAA5F</color>
+    <color name="rose">#EC93D8</color>
+    <color name="redder">#EC6A53</color>
+    <color name="reder">#65EFEA</color>
 </resources>

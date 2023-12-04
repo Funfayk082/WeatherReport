@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         var maxTomorrowTemp = -50
         var minAfterTomorrowTemp = 50
         var maxAfterTomorrowTemp = -50
+        var afterAfterTommorowString = ""
+        var minAfterAfterTomorrowTemp = 50
+        var maxAfterAfterTomorrowTemp = -50
+
 
         var binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
@@ -62,6 +66,16 @@ class MainActivity : AppCompatActivity() {
                 for (i in 12..17) et += weather.hourly.temperature_2m.get(i).toInt()
                 for (i in 18..23) nt += weather.hourly.temperature_2m.get(i).toInt()
 
+                afterAfterTommorowString = weather.daily.time.get(3).subSequence(9, 10).toString()
+
+                Log.e("Проверка получения даты", weather.daily.time.get(3).substring(6, 8))
+                when(weather.daily.time.get(3).substring(5,7)) {
+                    "12" -> afterAfterTommorowString += " декабря"
+                    "11" -> afterAfterTommorowString += " ноября"
+                    "10" -> afterAfterTommorowString += " октября"
+                    "9" -> afterAfterTommorowString += "сентября"
+                }
+
                 with(binding) {
                     morningTemp.text = (mt / 6).toString() + weather.current_units.temperature_2m
                     with(weather.daily) {
@@ -70,6 +84,9 @@ class MainActivity : AppCompatActivity() {
 
                         maxTomorrowTemp = temperature_2m_max.get(1).toInt()
                         maxAfterTomorrowTemp = temperature_2m_max.get(2).toInt()
+
+                        minAfterAfterTomorrowTemp = temperature_2m_min.get(3).toInt()
+                        maxAfterAfterTomorrowTemp = temperature_2m_max.get(3).toInt()
                     }
 
 
@@ -78,7 +95,10 @@ class MainActivity : AppCompatActivity() {
                     nightTemp.text = (nt / 6).toString() + weather.current_units.temperature_2m
                     tomorrowTempTV.text = "${minTomorrowTemp}${weather.current_units.temperature_2m}...${maxTomorrowTemp}${weather.current_units.temperature_2m}"
                     afterTomorrowTempTV.text = "${minAfterTomorrowTemp}${weather.current_units.temperature_2m}...${maxAfterTomorrowTemp}${weather.current_units.temperature_2m}"
-//
+
+                    afterTomorrowTempStr.text = afterAfterTommorowString
+                    afterAfterTomorrowTempTV.text = "${minAfterAfterTomorrowTemp}${weather.current_units.temperature_2m}...${maxAfterAfterTomorrowTemp}${weather.current_units.temperature_2m}"
+
                     currentTemp.text = currTemp + weather.current_units.temperature_2m
                     if (weather.current.weather_code > 50) view.setBackgroundResource(R.drawable.gradient_background_darksky)
                     else view.setBackgroundResource(R.drawable.gradient_background)
