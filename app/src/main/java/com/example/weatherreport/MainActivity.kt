@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
 
 
                     currentTemp.text = currTemp + weather.current_units.temperature_2m
-                    if (weather.current.weather_code < 50) view.setBackgroundResource(R.drawable.gradient_background_darksky)
+                    if (weather.current.weather_code > 50) view.setBackgroundResource(R.drawable.gradient_background_darksky)
                     else view.setBackgroundResource(R.drawable.gradient_background)
 
                     when (weather.current.weather_code) {
