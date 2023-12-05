@@ -5,8 +5,14 @@
     <color name="sky">#39A1CA</color>
     <color name="lightSky">#BDD3DC</color>
     <color name="darkSky">#023143</color>
-    <color name="textColor">#FFAA5F</color>
+<!--    <color name="textColor">#FFCD96</color>-->
+    <color name="textColor">#B3C6FF</color>
     <color name="rose">#EC93D8</color>
     <color name="redder">#EC6A53</color>
     <color name="reder">#65EFEA</color>
+    <color name="gray">#80AFACAC</color>
+    <color name="yellow">#E1EB7F</color>
+    <color name="blackvis">#80000000</color>
+    <color name="lightgray">#80FAFAFA</color>
+    <color name="lightgrayvis">#41E8E3E3</color>
 </resources>

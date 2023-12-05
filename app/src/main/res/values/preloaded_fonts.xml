@@ -4,5 +4,6 @@
         <item>@font/oswald_bold</item>
         <item>@font/roboto_mono_bold_italic</item>
         <item>@font/source_sans_pro_black</item>
+        <item>@font/ubuntu_mono_bold</item>
     </array>
 </resources>
