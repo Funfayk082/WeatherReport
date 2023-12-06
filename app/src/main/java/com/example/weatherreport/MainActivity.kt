@@ -31,12 +31,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         var currTemp: String = "0.0"
+        var unit = ""
         var currWC: Int = 0
 
-        var mt = 0
-        var dt = 0
-        var et = 0
-        var nt = 0
         var minTomorrowTemp = 50
         var maxTomorrowTemp = -50
         var minAfterTomorrowTemp = 50
@@ -57,17 +54,22 @@ class MainActivity : AppCompatActivity() {
             this
         ) { weather ->
             weather?.let {
+                unit = weather.current_units.temperature_2m
                 currTemp = weather.current.temperature_2m
                     .roundToLong().toString()
+
                 currWC = weather.current
                     .weather_code
-                for (i in 0..5) mt += weather.hourly.temperature_2m.get(i).toInt()
-                for (i in 6..11) dt += weather.hourly.temperature_2m.get(i).toInt()
-                for (i in 12..17) et += weather.hourly.temperature_2m.get(i).toInt()
-                for (i in 18..23) nt += weather.hourly.temperature_2m.get(i).toInt()
 
-                afterAfterTommorowString = weather.daily.time.get(3).subSequence(9, 10).toString()
-                afterAfterAfterTomorrowStr = weather.daily.time.get(4).subSequence(9, 10).toString()
+                weatherViewModel.dt.observe(this) {
+                    binding.dayTemp.text = (weatherViewModel.dt.value).toString() + unit
+                    binding.nightTemp.text = (weatherViewModel.nt.value).toString() + unit
+                    binding.morningTemp.text = (weatherViewModel.mt.value).toString() + unit
+                    binding.eveningTemp.text = (weatherViewModel.et.value).toString() + unit
+                }
+
+                afterAfterTommorowString = weather.daily.time.get(3).subSequence(8, 10).toString().toInt().toString()
+                afterAfterAfterTomorrowStr = weather.daily.time.get(4).subSequence(8, 10).toString().toInt().toString()
 
                 when(weather.daily.time.get(3).substring(5,7)) {
                     "12" -> afterAfterTommorowString += " декабря"
@@ -83,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                     "2" -> afterAfterTommorowString += " февраля"
                     "1" -> afterAfterTommorowString += " января"
                 }
+
                 when(weather.daily.time.get(4).substring(5,7)) {
                     "12" -> afterAfterAfterTomorrowStr += " декабря"
                     "11" -> afterAfterAfterTomorrowStr += " ноября"
@@ -99,10 +102,10 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 with(binding) {
-                    morningTemp.text = (mt / 6).toString() + weather.current_units.temperature_2m
+
                     with(weather.daily) {
                         minTomorrowTemp = temperature_2m_min.get(1).toInt()
-                        minAfterTomorrowTemp = temperature_2m_min.get(2).toInt()
+                        minAfterTomorrowTemp = temperature_2m_min[2].toInt()
 
                         maxTomorrowTemp = temperature_2m_max.get(1).toInt()
                         maxAfterTomorrowTemp = temperature_2m_max.get(2).toInt()
@@ -114,10 +117,6 @@ class MainActivity : AppCompatActivity() {
                         maxAfterAfterAfterTomorrowTemp= temperature_2m_max.get(4).toInt()
                     }
 
-
-                    dayTemp.text = (dt / 6).toString() + weather.current_units.temperature_2m
-                    eveningTemp.text = (et / 6).toString() + weather.current_units.temperature_2m
-                    nightTemp.text = (nt / 6).toString() + weather.current_units.temperature_2m
                     tomorrowTempTV.text = "${minTomorrowTemp}${weather.current_units.temperature_2m}...${maxTomorrowTemp}${weather.current_units.temperature_2m}"
                     afterTomorrowTempTV.text = "${minAfterTomorrowTemp}${weather.current_units.temperature_2m}...${maxAfterTomorrowTemp}${weather.current_units.temperature_2m}"
 
