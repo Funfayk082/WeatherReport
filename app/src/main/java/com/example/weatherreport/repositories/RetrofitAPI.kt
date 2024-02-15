@@ -1,4 +1,4 @@
-package com.example.weatherreport
+package com.example.weatherreport.repositories
 
 import com.example.weatherreport.models.Response
 import retrofit2.Call

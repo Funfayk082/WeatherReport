@@ -6,9 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import com.example.weatherreport.ApiConfig
+import com.example.weatherreport.repositories.ApiConfig
 import com.example.weatherreport.models.Response
-import com.example.weatherreport.repositories.WeatherRepository
 import retrofit2.Call
 import retrofit2.Callback
 import kotlin.math.log
@@ -26,11 +25,8 @@ class WeatherViewModel : ViewModel() {
     private val _nt = MutableLiveData<Int>()
     var nt: LiveData<Int> = _nt
 
-    val weatherRepository: WeatherRepository = WeatherRepository()
-    var lat: Double = 57.7665
-    var lon: Double = 40.9269
 
-    fun sosat() {
+    fun getDate(lat: Double, lon: Double) {
         val client = ApiConfig.getApiService().getWeather(lat, lon, "temperature_2m,apparent_temperature,weather_code", "temperature_2m","weather_code,temperature_2m_max,temperature_2m_min")
         client?.enqueue(object : Callback<Response?> {
             @SuppressLint("CheckResult")
