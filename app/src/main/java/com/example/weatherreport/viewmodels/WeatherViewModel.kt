@@ -1,6 +1,7 @@
 package com.example.weatherreport.viewmodels
 
 import android.annotation.SuppressLint
+import android.location.Address
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,8 +27,8 @@ class WeatherViewModel : ViewModel() {
     var nt: LiveData<Int> = _nt
 
 
-    fun getDate(lat: Double, lon: Double) {
-        val client = ApiConfig.getApiService().getWeather(lat, lon, "temperature_2m,apparent_temperature,weather_code", "temperature_2m","weather_code,temperature_2m_max,temperature_2m_min")
+    fun getDate(address: Address) {
+        val client = ApiConfig.getApiService().getWeather(address.latitude, address.longitude, "temperature_2m,apparent_temperature,weather_code", "temperature_2m","weather_code,temperature_2m_max,temperature_2m_min")
         client?.enqueue(object : Callback<Response?> {
             @SuppressLint("CheckResult")
             override fun onResponse(
